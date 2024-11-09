@@ -1,14 +1,18 @@
-import { Link } from 'react-router-dom'
-import {getDocs, collection, deleteDoc, doc, onSnapshot} from 'firebase/firestore';
-import {db} from '../firebase/config'
+import { Link } from 'react-router-dom';
+import {getDocs, collection, deleteDoc, doc, onSnapshot, updateDoc} from 'firebase/firestore';
+import {db} from '../firebase/config';
 import { useEffect,useState } from 'react';
-import DeleteIcon from '../assets/delete.svg'
+import { EditArticle } from './EditArticle';
+import DeleteIcon from '../assets/delete.svg';
+import EditIcon from '../assets/edit_icon.svg';
+import { useNavigate, useParams } from "react-router-dom";
+
 
 // styles
 import './Home.css'
 
 export default function Home() {
-
+  const navigate = useNavigate()
   const [articles, setArticles] = useState(null);
 
   useEffect(() => {
@@ -42,7 +46,7 @@ export default function Home() {
         //loading false;
     );
   }
-
+  
   return (
     <div className="home">
       <h2>Articles</h2>      
@@ -54,7 +58,12 @@ export default function Home() {
           <img 
             className="icon"
             onClick={() => handleDelete(article.id)}
-            src={DeleteIcon} alt="delete icon" 
+            src={DeleteIcon} alt="Delete Icon" 
+          />
+          <img 
+            className="icon"
+            onClick={() => navigate(`/articles/edit/${article.id}`)}
+            src={EditIcon} alt="Edit Icon" 
           />
         </div>
       ))}

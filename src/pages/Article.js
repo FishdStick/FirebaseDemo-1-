@@ -2,6 +2,8 @@ import { useNavigate, useParams } from "react-router-dom"
 import {getDoc, doc} from 'firebase/firestore';
 import {db} from '../firebase/config'
 import { useEffect,useState } from 'react';
+import EditIcon from '../assets/edit_icon.svg';
+
 
 export default function Article() {
   const { urlId } = useParams()
@@ -35,6 +37,11 @@ export default function Article() {
           <h2>{article.title}</h2>
           <p>By {article.author}</p>
           <p>{article.description}</p>
+          <img 
+            className="icon"
+            onClick={() => navigate(`/articles/edit/${article.id}`)}
+            src={EditIcon} alt="Edit Icon" 
+          />
         </div>
       )}
     </div>

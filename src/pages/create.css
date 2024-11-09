@@ -1,17 +1,17 @@
-.create {
+.create .edit {
   color: #555;
   max-width: 480px;
   margin: 60px auto;
 }
-.create label span {
+.create .edit label span {
   display: block;
   margin: 30px 0 10px;
 }
-.create p {
+.create .edit p {
   margin-top: 10px;
   font-size: 0.8em;
 }
-.create button {
+.create .edit button {
   display: block;
   width: 100px;
   font-size: 1em;
